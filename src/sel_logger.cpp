@@ -22,7 +22,8 @@
 #include <pulse_event_monitor.hpp>
 #include <sdbusplus/asio/object_server.hpp>
 #include <sel_logger.hpp>
-#include <threshold_event_monitor.hpp>
+//#include <threshold_event_monitor.hpp>
+#include <threshold_prop_monitor.hpp>
 
 #include <filesystem>
 #include <fstream>
@@ -236,6 +237,8 @@ int main(int argc, char* argv[])
 #ifdef SEL_LOGGER_MONITOR_THRESHOLD_EVENTS
     sdbusplus::bus::match::match thresholdAssertMonitor =
         startThresholdAssertMonitor(conn);
+    sdbusplus::bus::match::match propertyChangedMonitor =
+        startThresholdEventMonitor(conn);
 #endif
 
 #ifdef REDFISH_LOG_MONITOR_PULSE_EVENTS
