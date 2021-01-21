@@ -5,6 +5,7 @@ Description=IPMI SEL Logging Service
 Restart=always
 ExecStart=/usr/bin/sel-logger
 Type=simple
+SyslogIdentifier=phosphor-sel-logger
 
 [Install]
 WantedBy=multi-user.target
